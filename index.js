@@ -1,17 +1,28 @@
-const express = require('express')
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 
-const app = express()
+require('dotenv').config()
 
-const port = 3000
 
-app.get('/', (req, res) => {
+const app = express();
+const port = process.env.PORT || 5000;
 
-  res.send('Hello World, This is MERN Stack Project!')
+app.use(cors());
+app.use(express.json());
 
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {useNewUrlParser: true});
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log("MongoDB database connection established successfully")
 })
+
+
+const userRouter = require('./routes/user');
+// console.log("users: ", userRouter)
+app.use('/user', userRouter);
 
 app.listen(port, () => {
-
-  console.log(`My app is listening at http://localhost:${port}`)
-
-})
+    console.log(`Server is running on port: ${port}`);
+});
