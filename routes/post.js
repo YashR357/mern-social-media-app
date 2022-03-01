@@ -1,17 +1,16 @@
 
-const User = require("../models/user.model")
+const Post = require("../models/post.model")
 
 const router = require("express").Router();
 
-
-router.route('/add').post((req, res) => {
+router.route('/addPost').post((req, res) => {
     try {
-        let user = new User(req.body);
-        console.log("user is: ", user);
-        user = user.save();
+        let post = new Post(req.body);
+        // console.log("user is: ", user);
+        post = post.save();
         res.status(200).json({
             status: 200,
-            data: user,
+            data: post,
         })
     } catch (err) {
         console.log(err)
@@ -19,10 +18,9 @@ router.route('/add').post((req, res) => {
     }
 })
 
-
 router.route('/').get((req, res) =>
 {
-    User.find().then(users => res.json(users))
+    Post.find().then(post => res.json(post))
 })
 
 module.exports = router;

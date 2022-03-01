@@ -1,74 +1,28 @@
-
+import useState from 'react';
 import './App.css';
-
-function Login() {
-  return (
-
-  
-  <div class="login">
-    <h2 class="login-header">
-      Login
-    </h2>
-    <label for=".username">Username </label>
-    <br/>
-    <input type="text" class="username"></input>
-    <br/>
-    <label for=".password"> Password </label>
-    <br/>
-    <input type="password" class="password">
-    </input>
-    <br/>
-    <button class="login-btn">Login</button>
-    <button class="sign-up-btn">Sign Up</button>
- 
-    </div>);
-}
-function SignUp() {
-  return (
-    <div class="sign-up-container">
-    
-      <h2 class = "sign-up-header">
-        Sign Up
-      </h2>
-      {/* <div class="sign-up"> */}
-      <div class="username-container grid-item">
-      <label for=".username" class="grid-item">Username </label>
-   <br/>
-    <input type="text" class="username grid-item"></input>
-    </div>
-    <div class="password-container grid-item">
-    <label for=".password" class="grid-item"> Password </label>
-    <br/>
-    <input type="password" class="password grid-item">
-    </input>
-    </div>
-    
-
-    <div class="email-container grid-item">
-    <label for=".email" class="grid-item"> Email</label>
-    <br/>
-    <input type="text" class="email grid-item"></input>
-    </div>
-
-    <div class="name-container grid-item">
-    <label for=".name" class="grid-item"> Name</label>
-    <br/>
-    <input type="text" class="name grid-item"></input>
-    </div>
-
-    <button class="sign-up-btn grid-item">Sign Up</button>
-    <button class="login-btn grid-item">Login</button>
-    
-    </div>
-    // </div>
-    
-  );
-}
+import Login from './Login'
+import SignUp from './SignUp'
+import { Route, Link, BrowserRouter, Routes } from 'react-router-dom'
+import Homepage from './Homepage'
+import Post from './Post';
+import Read from './Read';
 function App() {
   return (
+    <BrowserRouter>
+    <div>
+      <Routes>
+      <Route exact path='/' element={<Homepage/>}/>
+
+     <Route path='/Login' element={<Login/>}/>
+
+    <Route path='/SignUp' element={<SignUp/>}/>
     
-    // <Login/>
-    <SignUp/>
+    <Route path='/Post' element={<Post/>}/>
+
+    <Route path="/ReadPost" element={<Read/>}/>
+    </Routes>
+    </div>
+    </BrowserRouter>
   );
 }
 
