@@ -1,8 +1,9 @@
 import './App.css';
 import { Route, Link, BrowserRouter, Routes, Navigate, useNavigate } from 'react-router-dom'
 import {useState} from "react";
+import axios from 'axios';
 // import { useNavigate } from "react-router-dom"
-
+import Navbar from './Navbar';
 
 function Login() {
     const [username,setUsername] = useState('');
@@ -12,28 +13,36 @@ function Login() {
     {
         e.preventDefault()
         const user = {username, password}
+        axios.post('http://localhost:5000/api/users', user)
+        .then((response) => {
+            console.log(response.data)
+            if (response.data === "Logged in successfully") {
+                navigate('/');
+            }
+        }) 
         // alert(fetch('http://localhost:5000/api/users'))
-        fetch('http://localhost:5000/api/users').then((response)=>
-        {
-            // console.log(response.json());
-            return response.json() 
-        }).then((data)=> {
-            console.log(data)
-            let users = data;
-            users.forEach((profile)=>
-            {
-                if (user.username === profile.username && user.password === profile.password) {
-                    console.log("logged in")
-                    navigate("/")                   
-                }
-                else {
-                    console.log("Couldn't find username or password, please try again")
-                }
-            })
-        })
+        // fetch('http://localhost:5000/api/users').then((response)=>
+        // {
+        //     // console.log(response.json());
+        //     return response.json() 
+        // }).then((data)=> {
+        //     console.log(data)
+        //     let users = data;
+        //     users.forEach((profile)=>
+        //     {
+        //         if (user.username === profile.username && user.password === profile.password) {
+        //             console.log("logged in")
+        //             navigate("/")                   
+        //         }
+        //         else {
+        //             console.log("Couldn't find username or password, please try again")
+        //         }
+        //     })
+        // })
     })
     return (
-  
+        <div>
+        <Navbar/>
     <form onSubmit={handleSubmit}>
     <div className="login">
       <h2 className="login-header">
@@ -55,6 +64,7 @@ function Login() {
    </Link>
       </div>
       </form>
+      </div>
       );
   }
 

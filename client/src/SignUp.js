@@ -1,7 +1,7 @@
 import {useState} from "react";
 import './App.css'
 import { Route, Link, BrowserRouter, Routes } from 'react-router-dom'
-
+import Navbar from "./Navbar";
 function SignUp() {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
@@ -21,6 +21,8 @@ function SignUp() {
         })
     }
     return (
+      <div>
+        <Navbar/>
          <form onSubmit={handleSubmit} className="sign-up-form" >
       <div className="sign-up-container">
       

@@ -3,6 +3,7 @@ import { Route, Link, BrowserRouter, Routes, Navigate, useNavigate } from 'react
 import {useState, useEffect} from "react";
 // import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import Navbar from './Navbar';
 
 
 function Read() {
@@ -42,7 +43,11 @@ function Read() {
         // })
     return (
         <div>
+
+        <Navbar/>
+        <div>
             {posts.map(post => <li >{post.post}</li>)}
+        </div>
         </div>
 //     <form onSubmit={handleSubmit}>
 //     <div className="login">

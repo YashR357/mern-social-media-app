@@ -1,26 +1,15 @@
 import {Link} from 'react-router-dom'
+import { AppBar } from '@mui/material'
+import {Toolbar} from '@mui/material'
+import {Button} from '@mui/material';
+import Navbar from './Navbar';
 function Homepage() {
     return (
-        <div>
-        <h1>Homepage</h1>
-        <Link to="/Signup" >
-          
-      <button className="homepage-button">Sign Up</button>
-   </Link>
-   <Link to="/Login" >
-          
-      <button className="homepage-button">Login</button>
-   </Link>
-    <Link to="/Post">
-   <button>Post</button>
-   </Link>
-   <Link to="/ReadPost">
-   <button>Read posts</button>
-   </Link>
-   </div>
-   
-        
-    )
-}
+            <div>
+                <Navbar/>
+                <h1 >Welcome!</h1>
+            </div>            
+        )
+    }
 
 export default Homepage

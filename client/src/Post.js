@@ -1,6 +1,7 @@
 import './App.css';
 import { Route, Link, BrowserRouter, Routes, Navigate, useNavigate } from 'react-router-dom'
 import {useState} from "react";
+import Navbar from './Navbar';
 
 function Post() {
     const [username,setUsername] = useState('');
@@ -21,7 +22,9 @@ function Post() {
         })
     }
     return (
-  
+  <div>
+
+  <Navbar/>
     <form onSubmit={handleSubmit}>
     <div className="login">
       <h2 className="login-header">
@@ -43,6 +46,7 @@ function Post() {
    
       </div>
       </form>
+      </div>
       );
   }
 
