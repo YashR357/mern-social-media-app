@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Link, BrowserRouter, Routes, Navigate, useNavigate } from 'react-router-dom'
 import {useState} from "react";
-import axios from 'axios';
+import Axios from 'axios';
 // import { useNavigate } from "react-router-dom"
 import Navbar from './Navbar';
 
@@ -9,16 +9,16 @@ function Login() {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const navigate = useNavigate();
+    Axios.defaults.withCredentials = true
     const handleSubmit = ((e)=>
     {
         e.preventDefault()
         const user = {username, password}
-        axios.post('http://localhost:5000/api/users', user)
+        Axios.post('http://localhost:5000/api/users', user)
         .then((response) => {
-            console.log(response.data)
-            if (response.data === "Logged in successfully") {
+            console.log("response")
+            console.log(response)
                 navigate('/');
-            }
         }) 
         // alert(fetch('http://localhost:5000/api/users'))
         // fetch('http://localhost:5000/api/users').then((response)=>

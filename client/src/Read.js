@@ -7,7 +7,6 @@ import Navbar from './Navbar';
 
 
 function Read() {
-    const navigate = useNavigate();
     const [posts,setPosts] = useState([]);
     useEffect(() => {
         axios.get('http://localhost:5000/api/posts').then(res => {
@@ -16,8 +15,8 @@ function Read() {
         }).catch(err => {
             console.log(err)
         })
-    })
-    var post = []
+    }, [])
+    // var post = []
     // fetch('http://localhost:5000/api/posts').then((response)=>
     //     {
     //         // console.log(response.json());
@@ -46,7 +45,7 @@ function Read() {
 
         <Navbar/>
         <div>
-            {posts.map(post => <li >{post.post}</li>)}
+            {posts.map((post) => <li >{post.post}</li>)}
         </div>
         </div>
 //     <form onSubmit={handleSubmit}>

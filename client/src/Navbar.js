@@ -7,10 +7,10 @@ import {MenuIcon} from "@mui/material";
 import {Button} from '@mui/material';
 import React from 'react';
 import './Navbar.css'
-import {createMuiTheme} from '@mui/material'
+import {createTheme} from '@mui/material'
 import {ThemeProvider} from '@mui/material'
 function Navbar() {
-    const customTheme = createMuiTheme({
+    const customTheme = createTheme({
         palette: {
           secondary: {
             main: "#F5BD1F",
@@ -29,7 +29,7 @@ function Navbar() {
         </Link>
             <Link style={{ textDecoration: 'none' }} to="/Signup" >
             
-        <Button sx={{ my: 2, color: 'white', display: 'block', margin: '10px' }} variant="text" underline="none" linkButton={true}>Sign Up</Button>
+        <Button sx={{ my: 2, color: 'white', display: 'block', margin: '10px' }} variant="text" underline="none">Sign Up</Button>
     </Link>
     <Link style={{ textDecoration: 'none' }} to="/Login" >
             
