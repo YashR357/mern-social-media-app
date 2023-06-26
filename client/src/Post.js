@@ -1,12 +1,19 @@
 import './App.css';
 import { Route, Link, BrowserRouter, Routes, Navigate, useNavigate } from 'react-router-dom'
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Navbar from './Navbar';
 
 function Post() {
-    const [username,setUsername] = useState('');
+    const [username,setUsername] = useState();
     const [post,setPost] = useState('');
+    // setUsername(localStorage.getItem('username'))
     const navigate = useNavigate();
+    useEffect(() => {
+      if (localStorage.getItem('username') !== null) {
+        setUsername(localStorage.getItem('username').replace(/['"]+/g, ''))
+      } 
+      
+    })
     const handleSubmit = (e) => {
         e.preventDefault()
         const posted = {username, post}
@@ -30,9 +37,6 @@ function Post() {
       <h2 className="login-header">
         Post a message
       </h2>
-      <label htmlFor=".username">Username </label>
-      <br/>
-      <input type="text" className="username" value={username} onChange={e => setUsername(e.target.value)}></input>
       <br/>
       <label htmlFor=".post"> Post </label>
       <br/>

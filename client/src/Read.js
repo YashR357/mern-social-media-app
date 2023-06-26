@@ -4,7 +4,12 @@ import {useState, useEffect} from "react";
 // import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import Navbar from './Navbar';
-
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function Read() {
     const [posts,setPosts] = useState([]);
@@ -45,7 +50,11 @@ function Read() {
 
         <Navbar/>
         <div>
-            {posts.map((post) => <li >{post.post}</li>)}
+            {posts.map((post) => <Card key = {post._id}><CardContent>
+                {post.username}</CardContent>
+                <CardContent>
+                    {post.post}
+                    </CardContent></Card>)}
         </div>
         </div>
 //     <form onSubmit={handleSubmit}>
