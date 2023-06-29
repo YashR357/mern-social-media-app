@@ -1,4 +1,13 @@
-In order to set environment variables set ATLAS_URI to your MONGODB ATLAS cluster database connection string.
+To start app:
+npm install
+npm start
+
+Client is on port 3000
+Server is on port 5000
+
+Must create MongoDB atlas cluster. 
+
+To configure environment variables set ATLAS_URI to your MONGODB ATLAS cluster database connection string.
 Set SESSION_SECRET to a unique value.
 If running this app on local machine, use a .env file to store these variables.
 If using docker-compose to deploy this app, the configuration is set, as long as a .env file is used.

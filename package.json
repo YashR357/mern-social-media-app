@@ -1,0 +1,17 @@
+{
+  "name": "social-media-app",
+  "version": "1.0.0",
+  "description": "In order to set environment variables set ATLAS_URI to your MONGODB ATLAS cluster database connection string.\r Set SESSION_SECRET to a unique value.\r If running this app on local machine, use a .env file to store these variables.\r If using docker-compose to deploy this app, the configuration is set, as long as a .env file is used.\r If using kubernetes to deploy this app, make kubernetes secrets for both values with the following commands:\r kubectl create secret generic mongodb-atlas-uri --from-literal=atlas-uri=$env:ATLAS_URI\r kubectl create secret generic session-secret --from-literal=SESSION_SECRET='<your-session-secret>'",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^7.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
