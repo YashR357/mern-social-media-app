@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+      - name: node
+        image: yash357/social-media-app-mern-be
+        ports:
+        - containerPort: 5000
+        env:
+        - name: ATLAS_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-atlas-uri
+              key: atlas-uri
+        - name: SESSION_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: session-secret
+              key: SESSION_SECRET
